@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Youtube, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import venusLogo from "@/assets/Venus_Logo.png";
 
 const Footer = () => {
   return (
@@ -9,9 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded bg-gold-gradient flex items-center justify-center font-heading font-bold text-lg text-navy-deep">
-                V
-              </div>
+              <img src={venusLogo} alt="Venus Solutions Logo" className="h-9 w-auto" />
               <span className="font-heading text-lg font-bold text-primary-foreground">
                 Venus Solutions
               </span>
