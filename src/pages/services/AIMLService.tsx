@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Brain, ChevronRight, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { GridPattern, FloatingDots, GlowOrb } from "@/components/DecorativeElements";
+import aiHeroImg from "@/assets/ai-ml-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -44,22 +45,34 @@ const AIMLService = () => (
         <Link to="/services" className="inline-flex items-center gap-1 text-gold/70 hover:text-gold text-sm mb-6 transition-colors">
           <ArrowLeft size={14} /> All Services
         </Link>
-        <motion.div initial="hidden" animate="visible" className="max-w-3xl">
-          <motion.div variants={fadeUp} custom={0} className="flex items-center gap-3 mb-6">
-            <div className="w-14 h-14 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center">
-              <Brain size={28} className="text-gold" />
-            </div>
+        <motion.div initial="hidden" animate="visible" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-xl">
+            <motion.div variants={fadeUp} custom={0} className="flex items-center gap-3 mb-6">
+              <div className="w-14 h-14 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center">
+                <Brain size={28} className="text-gold" />
+              </div>
+            </motion.div>
+            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
+              AI & Machine Learning <span className="text-gradient-gold">Consulting</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} custom={2} className="text-gold font-medium mb-4">Enterprise AI Strategy, Engineering & Deployment</motion.p>
+            <motion.p variants={fadeUp} custom={3} className="text-primary-foreground/70 leading-relaxed">
+              At Venus Solutions LLC, AI is approached as a strategic transformation initiative — not an experimental project. We design, build, deploy, and govern production-ready AI systems that integrate directly into enterprise operations.
+            </motion.p>
+          </div>
+          <motion.div variants={fadeUp} custom={2} className="hidden lg:block">
+            <img src={aiHeroImg} alt="AI neural network visualization" className="rounded-lg shadow-card-hover w-full h-80 object-cover" />
           </motion.div>
-          <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
-            AI & Machine Learning <span className="text-gradient-gold">Consulting</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} custom={2} className="text-gold font-medium mb-4">Enterprise AI Strategy, Engineering & Deployment</motion.p>
-          <motion.p variants={fadeUp} custom={3} className="text-primary-foreground/70 leading-relaxed">
-            At Venus Solutions LLC, AI is approached as a strategic transformation initiative — not an experimental project. We design, build, deploy, and govern production-ready AI systems that integrate directly into enterprise operations.
-          </motion.p>
         </motion.div>
       </div>
     </section>
+
+    {/* Mobile image */}
+    <div className="lg:hidden bg-background">
+      <div className="container mx-auto px-4 -mt-6 relative z-20">
+        <img src={aiHeroImg} alt="AI neural network visualization" className="rounded-lg shadow-card-hover w-full h-48 object-cover" />
+      </div>
+    </div>
 
     <section className="relative py-20 bg-background overflow-hidden">
       <GlowOrb className="w-72 h-72 bg-gold/5 -bottom-36 -left-36" />
