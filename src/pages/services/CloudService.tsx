@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Cloud, ChevronRight, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { GridPattern, FloatingDots, GlowOrb } from "@/components/DecorativeElements";
+import cloudHeroImg from "@/assets/cloud-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -44,22 +45,33 @@ const CloudService = () => (
         <Link to="/services" className="inline-flex items-center gap-1 text-gold/70 hover:text-gold text-sm mb-6 transition-colors">
           <ArrowLeft size={14} /> All Services
         </Link>
-        <motion.div initial="hidden" animate="visible" className="max-w-3xl">
-          <motion.div variants={fadeUp} custom={0} className="flex items-center gap-3 mb-6">
-            <div className="w-14 h-14 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center">
-              <Cloud size={28} className="text-gold" />
-            </div>
+        <motion.div initial="hidden" animate="visible" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-xl">
+            <motion.div variants={fadeUp} custom={0} className="flex items-center gap-3 mb-6">
+              <div className="w-14 h-14 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center">
+                <Cloud size={28} className="text-gold" />
+              </div>
+            </motion.div>
+            <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
+              Cloud Consulting & <span className="text-gradient-gold">Modernization</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} custom={2} className="text-gold font-medium mb-4">Secure, Scalable Digital Infrastructure</motion.p>
+            <motion.p variants={fadeUp} custom={3} className="text-primary-foreground/70 leading-relaxed">
+              We help organizations modernize legacy environments and transition to resilient cloud ecosystems designed for performance, security, and cost optimization.
+            </motion.p>
+          </div>
+          <motion.div variants={fadeUp} custom={2} className="hidden lg:block">
+            <img src={cloudHeroImg} alt="Cloud infrastructure visualization" className="rounded-lg shadow-card-hover w-full h-80 object-cover" />
           </motion.div>
-          <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
-            Cloud Consulting & <span className="text-gradient-gold">Modernization</span>
-          </motion.h1>
-          <motion.p variants={fadeUp} custom={2} className="text-gold font-medium mb-4">Secure, Scalable Digital Infrastructure</motion.p>
-          <motion.p variants={fadeUp} custom={3} className="text-primary-foreground/70 leading-relaxed">
-            We help organizations modernize legacy environments and transition to resilient cloud ecosystems designed for performance, security, and cost optimization.
-          </motion.p>
         </motion.div>
       </div>
     </section>
+
+    <div className="lg:hidden bg-background">
+      <div className="container mx-auto px-4 -mt-6 relative z-20">
+        <img src={cloudHeroImg} alt="Cloud infrastructure visualization" className="rounded-lg shadow-card-hover w-full h-48 object-cover" />
+      </div>
+    </div>
 
     <section className="relative py-20 bg-background overflow-hidden">
       <GlowOrb className="w-72 h-72 bg-gold/5 -bottom-36 -right-36" />

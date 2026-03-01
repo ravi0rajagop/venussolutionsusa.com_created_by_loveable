@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Brain, Cloud, BarChart3, Code2, Shield, Users, Award, ArrowRight, CheckCircle2, Landmark, Target, Handshake, Quote } from "lucide-react";
+import { Brain, Cloud, BarChart3, Code2, Shield, Users, Award, ArrowRight, CheckCircle2, Landmark, Target, Handshake, Quote, Zap, Eye, Wrench, BarChart } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import whyVenusImg from "@/assets/why-venus.jpg";
+import aboutTeamImg from "@/assets/about-team.jpg";
 import { GridPattern, FloatingDots, GlowOrb, CircuitPattern } from "@/components/DecorativeElements";
 
 const fadeUp = {
@@ -17,12 +19,20 @@ const services = [
 ];
 
 const whyUs = [
-  { icon: Award, title: "Certified Minority Business Enterprise (MBE)" },
-  { icon: Users, title: "Minority-Led | Woman-Owned" },
-  { icon: Landmark, title: "Architect-Led Engagements" },
-  { icon: Shield, title: "Structured Governance & Risk Controls" },
-  { icon: Handshake, title: "Scalable Delivery Through Strategic Alliances" },
-  { icon: Target, title: "Business-Outcome Focused Execution" },
+  { icon: Wrench, title: "Hands-On Architecture & Delivery", desc: "We don't just advise — we architect, build, and deploy. Our principals lead engagements directly, ensuring technical excellence from strategy through production." },
+  { icon: BarChart, title: "Deep Enterprise Data Expertise", desc: "19+ years specializing in ETL modernization, data warehousing, and complex system integrations across higher education, healthcare, and financial services." },
+  { icon: Zap, title: "Startup Agility, Enterprise Governance", desc: "We move fast without cutting corners. Structured delivery frameworks, risk controls, and transparent communication at every stage." },
+  { icon: Target, title: "Business-Outcome Focused Execution", desc: "Every engagement is measured by ROI, not billable hours. We align technology investments to revenue growth, cost reduction, and operational efficiency." },
+  { icon: Handshake, title: "Long-Term Partnership Mindset", desc: "We invest in understanding your business deeply. Our clients stay because we deliver consistently — not because of contracts." },
+  { icon: Shield, title: "Cost-Effective Enterprise Solutions", desc: "Get Accenture-level strategy and execution at a fraction of the cost. Boutique focus means lower overhead and higher value per dollar." },
+  { icon: Award, title: "NMSDC Certified MBE & Woman-Owned", desc: "Advance your supplier diversity objectives while partnering with a firm that delivers enterprise-grade results." },
+];
+
+const uspPillars = [
+  { title: "Boutique Firm, Enterprise Expertise", desc: "We combine the personalized service of a boutique consultancy with the deep technical capabilities typically found only at large firms." },
+  { title: "Architect-Led, Implementation-Focused", desc: "Our senior architects don't just design solutions — they build them. No hand-offs to junior teams. No disconnect between strategy and execution." },
+  { title: "Bridge Between Business & Technology", desc: "We translate complex technical requirements into business outcomes that executives can measure, and business goals into architectures that engineers can build." },
+  { title: "Scalable Solutions Designed for Growth", desc: "Every system we build is designed to scale. From data platforms processing millions of records to cloud architectures supporting global operations." },
 ];
 
 const testimonials = [
@@ -40,7 +50,7 @@ const stats = [
 
 const Index = () => (
   <main>
-    {/* Hero — no CTA buttons */}
+    {/* Hero */}
     <section className="relative min-h-[90vh] flex items-center bg-hero-gradient overflow-hidden">
       <div className="absolute inset-0 opacity-40" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }} />
       <div className="absolute inset-0 bg-hero-gradient opacity-70" />
@@ -76,21 +86,26 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Who We Are */}
+    {/* Who We Are — with image */}
     <section className="relative py-20 bg-background overflow-hidden">
       <CircuitPattern className="top-0 right-0 opacity-30" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-4xl mx-auto text-center">
-          <motion.h2 variants={fadeUp} custom={0} className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">Who We Are</motion.h2>
-          <motion.p variants={fadeUp} custom={1} className="text-muted-foreground leading-relaxed mb-6">
-            Venus Solutions LLC is a technology consulting and implementation firm focused on designing and delivering secure, scalable, and performance-driven digital solutions.
-          </motion.p>
-          <motion.p variants={fadeUp} custom={2} className="text-muted-foreground leading-relaxed mb-6">
-            We operate with startup agility while applying enterprise governance, structured delivery frameworks, and scalable strategic partnerships to support complex technology initiatives.
-          </motion.p>
-          <motion.p variants={fadeUp} custom={3} className="text-muted-foreground leading-relaxed">
-            Certified by the National Minority Supplier Development Council (NMSDC), we help organizations achieve both digital transformation and supplier diversity objectives.
-          </motion.p>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <motion.div variants={fadeUp} custom={0}>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">Who We Are</h2>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Venus Solutions LLC is a technology consulting and implementation firm focused on designing and delivering secure, scalable, and performance-driven digital solutions.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              We operate with startup agility while applying enterprise governance, structured delivery frameworks, and scalable strategic partnerships to support complex technology initiatives.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Certified by the National Minority Supplier Development Council (NMSDC), we help organizations achieve both digital transformation and supplier diversity objectives.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp} custom={1} className="rounded-lg overflow-hidden shadow-card-hover">
+            <img src={aboutTeamImg} alt="Venus Solutions team collaborating on enterprise technology solutions" className="w-full h-auto object-cover rounded-lg" />
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -121,25 +136,79 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Why Venus Solutions */}
+    {/* Why Venus Solutions — enhanced */}
     <section className="relative py-20 bg-background overflow-hidden">
       <CircuitPattern className="bottom-0 left-0 opacity-20" />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
-          <motion.h2 variants={fadeUp} custom={0} className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Why Venus Solutions LLC</motion.h2>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-6">
+          <motion.h2 variants={fadeUp} custom={0} className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            Why Leading Organizations Choose Venus Solutions
+          </motion.h2>
+          <motion.p variants={fadeUp} custom={1} className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            In a market crowded with generalist consulting firms and offshore outsourcing, Venus Solutions stands apart. We bring hands-on solution architecture, deep data expertise, and enterprise execution discipline — delivering measurable ROI without the overhead of a Big Four engagement.
+          </motion.p>
         </motion.div>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+
+        {/* Image banner */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1} className="rounded-lg overflow-hidden mb-12 max-w-5xl mx-auto shadow-card-hover">
+          <img src={whyVenusImg} alt="Enterprise technology partnership" className="w-full h-64 object-cover" />
+        </motion.div>
+
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {whyUs.map((item, i) => (
-            <motion.div key={item.title} variants={fadeUp} custom={i} className="flex items-center gap-3 p-5 bg-card rounded-lg shadow-card border-l-4 border-gold hover:shadow-card-hover transition-all duration-300">
-              <item.icon size={22} className="text-gold shrink-0" />
-              <span className="font-medium text-foreground text-sm">{item.title}</span>
+            <motion.div key={item.title} variants={fadeUp} custom={i} className="flex items-start gap-4 p-6 bg-card rounded-lg shadow-card border-l-4 border-gold hover:shadow-card-hover transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-navy flex items-center justify-center shrink-0">
+                <item.icon size={20} className="text-gold" />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-foreground mb-1">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Trust closing */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mt-12 max-w-3xl mx-auto text-center">
+          <p className="text-muted-foreground leading-relaxed italic border-l-4 border-gold pl-6 text-left">
+            When you partner with Venus Solutions, you're not hiring a vendor — you're gaining a technology ally invested in your long-term success. We measure our performance by your outcomes, and we don't stop until the job is done right.
+          </p>
         </motion.div>
       </div>
     </section>
 
-    {/* CTA — moved below Why Us */}
+    {/* USP Section */}
+    <section className="py-20 bg-muted/50 relative overflow-hidden">
+      <GlowOrb className="w-96 h-96 bg-gold/5 -top-48 -left-48" />
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
+          <motion.h2 variants={fadeUp} custom={0} className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            What Sets Us Apart
+          </motion.h2>
+          <motion.p variants={fadeUp} custom={1} className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
+            Venus Solutions LLC is a high-impact, execution-driven technology consulting partner that specializes in transforming complex enterprise data environments into streamlined, scalable, and insight-driven systems.
+          </motion.p>
+        </motion.div>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {uspPillars.map((p, i) => (
+            <motion.div key={p.title} variants={fadeUp} custom={i} className="bg-card rounded-lg p-8 shadow-card border-t-4 border-gold hover:shadow-card-hover transition-all duration-300">
+              <h3 className="font-heading font-semibold text-lg text-foreground mb-3">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mt-12 text-center">
+          <div className="bg-navy-deep rounded-lg p-8 max-w-3xl mx-auto">
+            <h3 className="font-heading font-semibold text-xl text-primary-foreground mb-3">Why It Matters to Clients</h3>
+            <p className="text-primary-foreground/70 leading-relaxed">
+              CIOs and IT Directors choose Venus Solutions because we deliver the strategic depth of a premium consultancy with the speed and accountability of an execution partner. Our clients get direct access to senior architects, transparent project governance, and solutions built for measurable ROI — not just impressive slide decks.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+
+    {/* CTA */}
     <section className="py-16 bg-hero-gradient relative overflow-hidden">
       <GridPattern className="inset-0 text-primary-foreground" />
       <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">

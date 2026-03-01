@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { GridPattern, FloatingDots, GlowOrb } from "@/components/DecorativeElements";
+import contactHeroImg from "@/assets/contact-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -82,8 +84,11 @@ const Contact = () => {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-hero-gradient pt-32 pb-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative bg-hero-gradient pt-32 pb-20 overflow-hidden">
+        <GridPattern className="inset-0 text-primary-foreground" />
+        <FloatingDots count={6} />
+        <GlowOrb className="w-96 h-96 bg-gold/5 -top-48 -right-48" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
             <motion.h1 variants={fadeUp} custom={0} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-6">
               Let's Build <span className="text-gradient-gold">What's Next</span>
@@ -94,6 +99,15 @@ const Contact = () => {
             <motion.p variants={fadeUp} custom={2} className="text-base text-gold/80 font-medium mt-4">
               Schedule a strategic consultation today.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 -mt-8 relative z-20">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-lg overflow-hidden shadow-card-hover">
+            <img src={contactHeroImg} alt="Venus Solutions office building" className="w-full h-48 md:h-64 object-cover" />
           </motion.div>
         </div>
       </section>

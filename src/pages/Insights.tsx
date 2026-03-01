@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Brain, Cloud, BarChart3, Code2, Handshake, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { GridPattern, FloatingDots, GlowOrb } from "@/components/DecorativeElements";
+import insightsHeroImg from "@/assets/insights-hero.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,8 +21,11 @@ const Insights = () => {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-hero-gradient pt-32 pb-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative bg-hero-gradient pt-32 pb-20 overflow-hidden">
+        <GridPattern className="inset-0 text-primary-foreground" />
+        <FloatingDots count={6} />
+        <GlowOrb className="w-96 h-96 bg-gold/5 -top-48 -right-48" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
             <motion.h1 variants={fadeUp} custom={0} className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-6">
               Insights & <span className="text-gradient-gold">Thought Leadership</span>
@@ -28,6 +33,15 @@ const Insights = () => {
             <motion.p variants={fadeUp} custom={1} className="text-lg text-primary-foreground/70 leading-relaxed">
               Venus Solutions LLC shares practical insights on enterprise technology trends, digital transformation strategy, and scalable architecture design.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 -mt-8 relative z-20">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-lg overflow-hidden shadow-card-hover">
+            <img src={insightsHeroImg} alt="Technology thought leadership and innovation" className="w-full h-64 md:h-80 object-cover" />
           </motion.div>
         </div>
       </section>
